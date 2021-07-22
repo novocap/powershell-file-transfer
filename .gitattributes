@@ -8,4 +8,4 @@ SUPPORT.md              export-ignore
 .github/                export-ignore
 .vscode/                export-ignore
 .azuredatastudio/       export-ignore
-# /css/*                  linguist-vendored
+/Modules/*              linguist-vendored
