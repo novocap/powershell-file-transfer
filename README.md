@@ -1,5 +1,7 @@
-# Repositorio de Plantilla para soluciones con PowerShell
-## Importar el Modulo de Plantilla
+[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/novocap/powershell-file-transfer)
+
+# PowerShell File Transfer repository
+## How to import the functionality
 ```pwsh
-Import-Module -Name ./pwsh-template.psm1 -Force -Verbose
+Import-Module -Name ./powershell-file-transfer.psm1 -Force -Verbose
 ```
