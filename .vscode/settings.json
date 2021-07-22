@@ -1,0 +1,20 @@
+{
+    "editor.renderWhitespace": "boundary",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableCommitSigning": true,
+    "markdown.styles": [
+        "css/markdown-styles.css"
+    ],
+    "markdown-pdf.styles": [
+        "css/markdown-pdf-styles.css"
+    ],
+    "markdown-pdf.outputDirectory": "~/Desktop",
+    "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; color: #585858; margin-left: 1cm;\">AREA DE SISTEMAS</div><div style=\"font-size: 9px; color: #585858; margin-left: auto; margin-right: 1cm; \">NOVOCAP S.A.</div>",
+    "markdown-pdf.footerTemplate": "<div style=\"font-size: 7px; border-radius: 0.25em; border: 1px solid #ddd; padding: 2.5px; color: #ddd; text-align: center; margin-left: 1cm;\"><table><thead><tr><th>CODIGO</th></tr></thead><tbody><tr><td> <span class='title'></span></td></tr></tbody></table></div><div style=\"font-size: 9px; color: #585858; margin-left: auto; margin-right: 1cm;\"> Página <span class='pageNumber'></span> de <span class='totalPages'></span></div>",
+    "markdown-pdf.margin.top": "1.15cm",
+    "markdown-pdf.margin.left": "0.75cm",
+    "markdown-pdf.margin.right": "0.75cm",
+    "markdown-pdf.margin.bottom": "2.5cm",
+    "markdown-pdf.displayHeaderFooter": true
+}
