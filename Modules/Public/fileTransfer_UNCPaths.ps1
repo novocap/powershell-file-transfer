@@ -1,26 +1,46 @@
-$credOrigen = Get-Credential
+[CmdletBinding()]
 
-$rutaOrigen = "\\ave-svr-bk01\c$\Inventario\Avellaneda"
+param (
+    [Parameter(Mandatory = $true)]
+    [string]
+    $OriginPath,
+    [Parameter(Mandatory = $true)]
+    [string]
+    $DestinationPath,
+    [Parameter(Mandatory = $true)]
+    [string]
+    $FileNameToCopy
+)
 
-$svrOrigen = New-PSDrive -Name "Origen" -Root $rutaOrigen -PSProvider "FileSystem" -Credential $credOrigen
+if ($null -ne $OriginPath){
+    $originPath = (Get-Item -Path $OriginPath).FullName
+}
+if ($null -ne $DestinationPath){
+    $destinationPath = (Get-Item -Path $DestinationPath).FullName
+}
+if ($null -ne $FileToCopy){
+    $fileNameToCopy = (Get-Item -Path $FileNameToCopy).FullName
+}
 
-$rutaDestino = "\\novocap.com\Payroll"
+$credential = Get-Credential
 
-$nombreArchivoACopiar = "Prueba.docx"
 
-$archivoACopiar = Get-ChildItem -Path $svrOrigen.Root | Where-Object {$_.Name -eq $nombreArchivoACopiar}
+$originSVR = New-PSDrive -Name "OriginSVR" -Root $rutaOrigen -PSProvider "FileSystem" -Credential $credential
+
+
+$fileToCopy = Get-ChildItem -Path $originSVR.Root | Where-Object {$_.Name -eq $fileNameToCopy}
 
 try {
     
-    Copy-Item -Path $archivoACopiar.FullName -Destination $rutaDestino
+    Copy-Item -Path $fileToCopy.FullName -Destination $destinationPath
 
-    $archivoEnDestino = Get-ChildItem -Path $rutaDestino | Where-Object {$_.Name -eq $archivoACopiar.Name}
+    $fileInDestination = Get-ChildItem -Path $destinationPath | Where-Object {$_.Name -eq $fileToCopy.Name}
 
-    [String] $hashArchivoOrigen = (Get-FileHash -Path $archivoACopiar.FullName -ErrorAction SilentlyContinue).Hash
-    [String] $hashArchivoDestino = (Get-FileHash -Path $archivoEnDestino.FullName -ErrorAction SilentlyContinue).Hash
+    [String] $originFileHash = (Get-FileHash -Path $fileToCopy.FullName -ErrorAction SilentlyContinue).Hash
+    [String] $destinationFileHash = (Get-FileHash -Path $fileInDestination.FullName -ErrorAction SilentlyContinue).Hash
         
-    if ($hashArchivoOrigen -eq $hashArchivoDestino) {
-           Write-Host "OK, la integridad del archivo es correcta"
+    if ($originFileHash -eq $destinationFileHash) {
+           Write-Host "OK, the integrity is correct"
     }
     else {
          [String] $differentHashError = ("[ERROR] - File integrity error: {0}" -f $DestinationFile)
@@ -30,5 +50,5 @@ try {
 
 # Catch the error when the file is being used 
 catch [Microsoft.PowerShell.Commands.WriteErrorException] { 
-    Write-Host "Error, el archivo se encuentra en uso"
+    Write-Host "Error, the file es being used"
 }
