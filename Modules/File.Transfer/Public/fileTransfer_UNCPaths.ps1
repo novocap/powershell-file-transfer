@@ -25,7 +25,7 @@ if ($null -ne $FileToCopy){
 $credential = Get-Credential
 
 
-$originSVR = New-PSDrive -Name "OriginSVR" -Root $rutaOrigen -PSProvider "FileSystem" -Credential $credential
+$originSVR = New-PSDrive -Name "OriginSVR" -Root $originPath -PSProvider "FileSystem" -Credential $credential
 
 
 $fileToCopy = Get-ChildItem -Path $originSVR.Root | Where-Object {$_.Name -eq $fileNameToCopy}
