@@ -25,3 +25,17 @@ $RECYCLE.BIN/
 # Data files
 # ==========
 *.cro
+
+# ================
+# Encryption Files
+# ================
+
+# Credential files
+*.key
+
+# ============
+# Module Files
+# ============
+
+# Manifiest files
+/Modules/*/*.psd1
