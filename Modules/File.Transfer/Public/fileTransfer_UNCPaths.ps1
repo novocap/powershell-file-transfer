@@ -30,6 +30,7 @@ $originSVR = New-PSDrive -Name "OriginSVR" -Root $rutaOrigen -PSProvider "FileSy
 
 $fileToCopy = Get-ChildItem -Path $originSVR.Root | Where-Object {$_.Name -eq $fileNameToCopy}
 
+
 try {
     
     Copy-Item -Path $fileToCopy.FullName -Destination $destinationPath
