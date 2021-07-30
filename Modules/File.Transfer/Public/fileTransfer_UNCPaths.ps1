@@ -1,13 +1,10 @@
 [CmdletBinding()]
 param (
-    [Parameter(Mandatory = $true)]
-    [string]
+    [String]
     $OriginPath,
-    [Parameter(Mandatory = $true)]
-    [string]
+    [String]
     $DestinationPath,
-    [Parameter(Mandatory = $true)]
-    [string]
+    [String]
     $FileNameToCopy
 )
 {
